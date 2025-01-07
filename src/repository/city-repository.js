@@ -41,7 +41,7 @@ class cityRepository {
         }
     }
 
-    async updateCity (cityId , data) {
+    async updateCity (cityId , data) { // data is object like {name:cityname}
         try {
             const city = await City.update(data , {
                 where : {
