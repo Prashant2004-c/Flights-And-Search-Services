@@ -2,7 +2,7 @@ const { where } = require('sequelize');
 const { City } = require('../models/index');
 const city = require('../models/city');
 
-class cityRepository {
+class CityRepository {
     async createCity({ name }) {
         try{
             const city = await City.create({ name });
@@ -56,4 +56,4 @@ class cityRepository {
     }
 }
 
-module.exports = cityRepository;
+module.exports = CityRepository;

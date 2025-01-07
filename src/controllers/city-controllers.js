@@ -1,6 +1,6 @@
 const { CityService } = require('../services/index');
 
-const cityService = CityService();
+const cityService = new CityService();
 `
 post 
 data -> req.body
@@ -94,5 +94,12 @@ const update = async (req,res) => {
              data: {}
          })
      }
+}
+
+module.exports = {
+    create,
+    destroy,
+    get,
+    update,
 }
 
