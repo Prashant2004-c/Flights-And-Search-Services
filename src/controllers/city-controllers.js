@@ -53,24 +53,24 @@ const destroy = async (req,res) => {
 `req -> get
 id -> /city/:id
 `
-const get = async (req,res) => {
+const get = async (req, res) => {
     try {
-        const city = await cityService.getCity(req.params.id);
+        const response = await cityService.getCity(req.params.id);
         return res.status(200).json({
-         data : city,
-         success : true,
-         message : "City fetched successfully",
-         err : {}
-        }) 
-     } catch (error) {
-         console.log(error);
-         return res.status(500).json({
-             success : false,
-             message : "not able to get the city",
-             err : error,
-             data: {}
-         })
-     }
+            data: response,
+            success: true,
+            message: 'Successfully fetched a city',
+            err: {}
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            data: {},
+            success: false,
+            message: 'Not able to get the city',
+            err: error
+        });
+    }
 }
 
 `req-> patch

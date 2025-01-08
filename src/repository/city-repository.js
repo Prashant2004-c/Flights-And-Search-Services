@@ -1,6 +1,6 @@
-const { where } = require('sequelize');
+// const { where } = require('sequelize');
 const { City } = require('../models/index');
-const city = require('../models/city');
+// const city = require('../models/city');
 
 class CityRepository {
     async createCity({ name }) {
@@ -27,14 +27,13 @@ class CityRepository {
         }
     }
 
-    async getCity (cityId) {
+    async updateCity (cityId , data) { // data is object like {name:cityname}
         try {
-            const city = await City.findbyPk(cityId);
-            // const city = await City.findOne({
-            //     where : {
-            //         id : cityId
-            //     }
-            // });
+            const city = await City.update(data , {
+                where : {
+                    id : cityId
+                }
+            });
             return city;
         } catch(error) {
             console.log("Something wrong in repository layer.");
@@ -42,18 +41,21 @@ class CityRepository {
         }
     }
 
-    async updateCity (cityId , data) { // data is object like {name:cityname}
+    async getCity(cityId) {
         try {
-            const city = await City.update(data , {
-                where : {
-                    id : cityId
-                }
-            })
-        } catch(error) {
-            console.log("Something wrong in repository layer.");
-            throw{error};
+            const city = await City.findByPk(cityId);
+            // const city = await City.findOne({
+            //     where : {
+            //         id : cityId
+            //     }
+            // });
+            return city;
+        } catch (error) {
+            console.log("Something went wrong in the repository layer");
+            throw {error};
         }
     }
+
 }
 
 module.exports = CityRepository;
