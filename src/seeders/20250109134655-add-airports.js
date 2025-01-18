@@ -37,6 +37,12 @@ module.exports = {
       cityId : 8,
       createdAt : new Date(),
       updatedAt : new Date()
+    },
+    {
+      name : 'Prayagraj Airport',
+      cityId : 13,
+      createdAt : new Date(),
+      updatedAt : new Date()
     }
    ] , {});
   },
